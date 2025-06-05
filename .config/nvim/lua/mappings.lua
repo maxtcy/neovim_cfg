@@ -13,7 +13,7 @@ km.set("n", "<Leader>u", ":Lazy update<CR>", { desc = "Lazy Update (Sync)" })
 
 km.set("v", "y", "ygv<Esc>", { desc = "Yank and reposition cursor" })
 
-
+local pluginKeys = {}
 -- ===========================================
 --   fzf-lua
 -- ===========================================
@@ -32,8 +32,6 @@ km.set("n", "<leader>k", require("fzf-lua").keymaps, { desc = "Keymaps" })
 km.set("n", "<leader>f", require("fzf-lua").live_grep, { desc = "FZF Grep" })
 
 km.set("n", "<leader>b", require("fzf-lua").buffers, { desc = "FZF Buffers" })
-
-km.set("v", "<leader>8", require("fzf-lua").grep_visual, { desc = "FZF Selection" })
 
 km.set("n", "<leader>7", require("fzf-lua").grep_cword, { desc = "FZF Word" })
 
@@ -63,3 +61,41 @@ km.set(
   { desc = "Document Diagnostics" }
 )
 
+-- ===========================================
+--   nvim-tree
+-- ===========================================
+km.set("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
+km.set("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+pluginKeys.nvimTreeList = {
+    { key = { "o", "<2-LeftMouse>" }, action = "edit" },
+    { key = "<CR>", action = "system_open" },
+    { key = "v", action = "vsplit" },
+    { key = "h", action = "split" },
+    { key = "i", action = "toggle_ignored" },
+    { key = ".", action = "toggle_dotfiles" },
+    { key = "R", action = "refresh" },
+    { key = "a", action = "create" },
+    { key = "d", action = "remove" },
+    { key = "r", action = "rename" },
+    { key = "x", action = "cut" },
+    { key = "c", action = "copy" },
+    { key = "p", action = "paste" },
+    { key = "y", action = "copy_name" },
+    { key = "Y", action = "copy_path" },
+    { key = "gy", action = "copy_absolute_path" },
+    { key = "I", action = "toggle_file_info" },
+    { key = "n", action = "tabnew" },
+    { key = { "]" }, action = "cd" },
+    { key = { "[" }, action = "dir_up" },
+}
+
+-- ===========================================
+--   nvim-tree
+-- ===========================================
+-- Switch between left / right tab
+km.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
+km.set("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+
+km.set("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt)
+
+km.set("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)

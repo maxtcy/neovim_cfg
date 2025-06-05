@@ -76,11 +76,28 @@ require("lazy").setup({
         "folke/which-key.nvim",
         config = get_setup("which-key"),
         event = "VeryLazy",
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
     },
     {
         "lewis6991/gitsigns.nvim",
         event = "BufReadPre",
         config = get_setup("gitsigns"),
+    },
+    {
+        "akinsho/bufferline.nvim",
+        config = 'bufferline',
+        requires = {
+            "kyazdani42/nvim-web-devicons",
+            "moll/vim-bbye",
+        },
     },
 })
 
@@ -99,7 +116,6 @@ require("nvim-treesitter.configs").setup({
 })
 
 require('config')
--- Gtags
 require('config.cscope_maps')
 require('config.gtags_auto')
 require('autoclose').setup()
